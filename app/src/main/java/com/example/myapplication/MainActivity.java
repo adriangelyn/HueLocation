@@ -7,7 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -15,6 +18,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 
+    EditText input;
+    TextView result;
     ImageButton cameraBtn ;
 
     @Override
@@ -24,7 +29,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         cameraBtn = findViewById(R.id.camera_png);
         cameraBtn.setOnClickListener(this);
-    }
+        }
 
     @Override
     public void onClick(View v) {
