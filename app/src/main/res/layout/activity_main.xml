@@ -18,13 +18,6 @@
         android:layout_marginTop="180dp">
     </ImageButton>
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="230dp"
-        android:text="Information" />
 
     <EditText
         android:id="@+id/input"
@@ -33,11 +26,13 @@
         android:layout_marginLeft="140dp"
         android:layout_marginTop="130dp"
         android:hint="Enter code here"
+        android:textColorHint="@color/khaki"
+        android:textColor="@color/khaki"
         android:textSize="12dp"
         android:ems="10" />
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/show"
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_marginLeft="210dp"

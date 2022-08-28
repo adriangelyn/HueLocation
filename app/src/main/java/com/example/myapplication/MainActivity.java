@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     EditText input;
     TextView result;
-    ImageButton cameraBtn ;
+    ImageButton cameraBtn;
+    Button search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,18 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         cameraBtn = findViewById(R.id.camera_png);
         cameraBtn.setOnClickListener(this);
-        }
+
+        search = findViewById(R.id.show);
+        input = findViewById(R.id.input);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfo();
+            }
+        });
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -76,4 +89,62 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    private void showInfo() {
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.showlocation, null);
+        myDialog.setView(view);
+        final AlertDialog dialog = myDialog.create();
+
+        final TextView information = view.findViewById(R.id.information);
+        final TextView name = view.findViewById(R.id.name);
+        final TextView size = view.findViewById(R.id.size);
+        final TextView location = view.findViewById(R.id.location);
+        final TextView done = view.findViewById(R.id.done);
+
+        String barcode = input.getText().toString().trim();
+
+        if (barcode.equals("0912345")){
+            information.setText("INFORMATION");
+            name.setText("Ada Black");
+            size.setText("6");
+            location.setText("rack 6");
+            done.setText("done");
+        }
+
+        if (barcode.equals("0912346")){
+            information.setText("INFORMATION");
+            name.setText("Ada Bleu");
+            size.setText("6");
+            location.setText("rack 6");
+            done.setText("done");
+        }
+
+        if (barcode.equals("0912347")){
+            information.setText("INFORMATION");
+            name.setText("Ada Fleur");
+            size.setText("7");
+            location.setText("rack 7");
+            done.setText("done");
+        }
+
+        if (barcode.equals("0912348")){
+            information.setText("INFORMATION");
+            name.setText("Ada Blush");
+            size.setText("8");
+            location.setText("rack 8");
+            done.setText("done");
+        }
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
 }
